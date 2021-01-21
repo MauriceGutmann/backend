@@ -1,0 +1,24 @@
+plugins {
+    id 'nu.studer.credentials' version '2.1'
+}
+
+def artifactoryCredentials = {
+    username = project.hasProperty('artifactory.username') ? project.property('artifactory.username') : System.properties['user.name']
+    password = project.hasProperty('artifactory.password') ? project.property('artifactory.password') : credentials['artifactory.password']
+}
+
+repositories {
+    maven {
+        credentials artifactoryCredentials
+        url "https://artifactory.sybit.de/libs-release"
+    }
+}
+
+configurations {
+    tools
+}
+
+task install {
+}
+
+defaultTasks "install"
