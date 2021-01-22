@@ -18,6 +18,12 @@ hybris/bin/custom/**/commonwebsrc/
 hybris/bin/custom/**/addons/
 hybris/bin/custom/**/addonsrc/
 hybris/bin/custom/**/node_modules/
+hybris-sbg/
+installer/
+build-tools/
+
+README
+SIGNATURE.SMF
 
 .project
 .springBeans
