@@ -497,6 +497,9 @@ def platform = platform {
             extName 'xyformsservices'
             extName 'xyformsstorefrontcommons'
             extName 'xyformsweb'
+		
+		//custom extension to display the current SAP Commerce release version within HAC and to import some ImpEx
+		extName 'vanillacommercehacext'
     }
 
     addons {

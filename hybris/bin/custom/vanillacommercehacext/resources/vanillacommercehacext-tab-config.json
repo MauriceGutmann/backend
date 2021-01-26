@@ -1,0 +1,9 @@
+[ {
+  "basePath" : "/vanillacommerce",
+  "mainTabLabel" : "Vanilla Commerce",
+  "subTabs" : [ {
+    "path" : "/info",
+    "label" : "Info",
+    "skipPrefix" : false
+  } ]
+} ]
