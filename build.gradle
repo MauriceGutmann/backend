@@ -77,7 +77,7 @@ task runInstaller(type: Exec) {
 	dependsOn 'unzipHybris'
 	workingDir = installerDir
 	executable = isWindows ? "cmd" : "sh"
-	args = isWindows ? ["/c"] << "install.bat -r cx-spartacus -A initAdminPassword=nimda -A local_property:commerce.version=${project.property("hybrisVersion")}" : ["-c"] << "install.sh -r cx-spartacus -A initAdminPassword=nimda -A local_property:commerce.version=${project.property("hybrisVersion")}"
+	args = isWindows ? ["/c"] << "install.bat -r cx-spartacus -A initAdminPassword=nimda -A local_property:commerce.version=${project.property("hybrisVersion")}" : ["-c"] << "./install.sh -r cx-spartacus -A initAdminPassword=nimda -A local_property:commerce.version=${project.property("hybrisVersion")}"
 	finalizedBy copyCustomConfigFiles
 }
 
