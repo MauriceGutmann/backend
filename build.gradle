@@ -1,15 +1,11 @@
-plugins {
-    id 'nu.studer.credentials' version '2.1'
-}
-
 def artifactoryCredentials = {
-    username = project.hasProperty('artifactory.username') ? project.property('artifactory.username') : System.properties['user.name']
-    password = project.hasProperty('artifactory.password') ? project.property('artifactory.password') : credentials['artifactory.password']
+    username = project.property('artifactory.username')
+    password = project.property('artifactory.apikey')
 }
 
 repositories {
     maven {
-        credentials artifactoryCredentials
+	    credentials artifactoryCredentials
         url "https://artifactory.sybit.de/libs-release"
         metadataSources {
             artifact()
@@ -125,7 +121,7 @@ task unzipHybris {
     outputs.upToDateWhen { file(hybrisPlatformDir).exists() }
     doLast {
         if (file(hybrisBinDir).exists()) {
-            //deleteHybrisBinDir()
+            deleteHybrisBinDir()
         }
         delete hybrisConfigDir
         logger.lifecycle "Unzipping ${zipFile.name}"
