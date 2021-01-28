@@ -19,7 +19,7 @@ configurations {
 
 dependencies {
     runtime "hybris:hybris-commerce-suite:${hybrisVersion}@zip"
-	runtime "spartacus:spartacussampledata:2005@zip"
+	runtime "spartacus:spartacussampledata:${spartacusSampleDataVersion}@zip"
 }
 
 ext {
@@ -45,8 +45,8 @@ defaultTasks "install"
     }
 }
 
-task initialize {
-    dependsOn ant_initialize
+task cleanAllInitialize(type: GradleBuild) {
+     tasks = ['ant_clean', 'ant_all', 'ant_initialize']
 }
 
 task addCommerceVersionProperty {
@@ -55,9 +55,11 @@ task addCommerceVersionProperty {
 		def properties = new Properties()
 		properties.load(new FileInputStream(localPropertiesFile))
 		properties.put('commerce.version', project.property("hybrisVersion"))
+        properties.put('spartacus.version', project.property("spartacusVersion"))
+        properties.put('spartacus.sampledata.version', project.property("spartacusSampleDataVersion"))
 		properties.store new FileOutputStream(localPropertiesFile), 'Generated during Vanilla Commerce installation'
 	}
-	finalizedBy initialize
+	finalizedBy cleanAllInitialize
 }
 
 task copyCustomConfigFiles {
@@ -74,7 +76,6 @@ task copyCustomConfigFiles {
 }
 
 task runInstaller(type: Exec) {
-	dependsOn 'unzipHybris'
 	workingDir = installerDir
 	executable = isWindows ? "cmd" : "sh"
 	args = isWindows ? ["/c"] << "install.bat -r cx-spartacus -A initAdminPassword=nimda -A local_property:commerce.version=${project.property("hybrisVersion")}" : ["-c"] << "./install.sh -r cx-spartacus -A initAdminPassword=nimda -A local_property:commerce.version=${project.property("hybrisVersion")}"
@@ -118,7 +119,6 @@ task unzipSpartacusSampleData {
 task unzipHybris {
     File zipFile = project.configurations.runtime.find { it.name.startsWith("hybris-commerce-suite") }
     inputs.files zipFile
-    outputs.upToDateWhen { file(hybrisPlatformDir).exists() }
     doLast {
         if (file(hybrisBinDir).exists()) {
             deleteHybrisBinDir()
@@ -144,7 +144,7 @@ private void deleteHybrisBinDir() {
     ant.delete(includeEmptyDirs: true) {
         fileset(dir: hybrisBinDir) {
             include(name: "**/*")
-            exclude(name: "custom/**")
+            exclude(name: "custom/vanillacommercehacext/**")
         }
     }
 }

@@ -15,8 +15,10 @@
 	<div class="prepend-top span-17 colborder" id="content">
 		<button id="toggleSidebarButton">&gt;</button>
 		<div class="marginLeft" id="inner">
-			<h2>Info</h2>
+			<h2>Demo System Info</h2>
 			<p>Commerce Version: ${info.commerceVersion}</p>
+			<p>Spartacus Version: ${info.spartacusVersion}</p>
+			<p>Spartacus Sample Data Version: ${info.spartacusSampleDataVersion}</p>
 		</div>
 	</div>
 	<div id="dialogContainer"></div>

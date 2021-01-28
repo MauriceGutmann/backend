@@ -17,6 +17,7 @@ hybris/bin/custom/vanillacommercehacext/.settings/
 hybris/bin/custom/vanillacommercehacext/.externalToolBuilders/
 hybris/bin/custom/vanillacommercehacext/**/classes/
 hybris/bin/custom/vanillacommercehacext/**/testclasses/
+hybris/bin/custom/vanillacommercehacext/**/gensrc/
 
 README
 SIGNATURE.SMF

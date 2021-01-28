@@ -22,16 +22,17 @@ import com.google.common.collect.ImmutableList;
 
 @Controller
 @RequestMapping("/vanillacommerce/**")
-public class VanillaCommerceHacController
-{
+public class VanillaCommerceHacController {
+
 	@Resource
 	private ConfigurationService configurationService;
 
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
-	public String showCustomStatistics(final Model model)
-	{
+	public String showCustomStatistics(final Model model) {
 		final VanillaCommerceInfo info = new VanillaCommerceInfo();
 		info.setCommerceVersion(configurationService.getConfiguration().getString("commerce.version"));
+		info.setSpartacusVersion(configurationService.getConfiguration().getString("spartacus.version"));
+		info.setSpartacusSampleDataVersion(configurationService.getConfiguration().getString("spartacus.sampledata.version"));
 		model.addAttribute("info", info);
 		return "vanillaCommerceInfo";
 	}

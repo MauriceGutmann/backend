@@ -10,6 +10,8 @@
 
 	<bean class="de.hybris.platform.vanillacommerce.data.VanillaCommerceInfo">
 		<property name="commerceVersion" type="java.lang.String"/>
+		<property name="spartacusVersion" type="java.lang.String"/>
+		<property name="spartacusSampleDataVersion" type="java.lang.String"/>
 	</bean>
 
 </beans>
