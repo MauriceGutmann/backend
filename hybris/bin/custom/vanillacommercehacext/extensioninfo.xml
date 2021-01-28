@@ -5,27 +5,21 @@
            
     
     <extension abstractclassprefix="Generated" classprefix="Yhacext" jaloLogicFree="true" managername="YhacextManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="vanillacommercehacext" usemaven="true">
-                      
-        
+
         <!-- for more information on maven managed libraries please consult https://wiki.hybris.com/x/Nq8sDQ -->
-                      
         
         <!-- you should add all required extensions to this list, except platform extensions which are automatically required -->
-                         
-      
-        
+
 		<!-- add a dependency to powertoolsstore to ensure this extension is loaded after powertoolsstore, so we can run an ImpEx to enable all powertools sample user -->
         <requires-extension name="powertoolsstore"/>
-                         
-        
+
+        <!-- add a dependency to spartacussampledata to ensure this extension is loaded after spartacussampledata, so we can run an ImpEx to change the preview URL of the powertools-spa and electronics-spa sites -->
+        <requires-extension name="spartacussampledata"/>
+
         <coremodule generated="true" manager="vanillacommercehacext.jalo.YhacextManager" packageroot="vanillacommercehacext"/>
-                           
         
         <meta key="hac-module" value="true"/>
-                   
-    
-    </extension>
-              
 
+    </extension>
 
 </extensioninfo>

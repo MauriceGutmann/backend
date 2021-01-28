@@ -12,6 +12,8 @@
 		<property name="commerceVersion" type="java.lang.String"/>
 		<property name="spartacusVersion" type="java.lang.String"/>
 		<property name="spartacusSampleDataVersion" type="java.lang.String"/>
+		<property name="spartacusPowertoolsUrl" type="java.lang.String"/>
+		<property name="defaultPasswordB2BCustomer" type="java.lang.String"/>
 	</bean>
 
 </beans>

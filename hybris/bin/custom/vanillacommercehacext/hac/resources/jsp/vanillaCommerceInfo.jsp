@@ -20,6 +20,17 @@
 			<p>Spartacus Version: ${info.spartacusVersion}</p>
 			<p>Spartacus Sample Data Version: ${info.spartacusSampleDataVersion}</p>
 		</div>
+
+		<div class="marginLeft" id="inner">
+			<h3>URLs</h3>
+			<p>Spartacus Powertools: ${info.spartacusPowertoolsUrl}</p>
+		</div>
+
+		<div class="marginLeft" id="inner">
+			<h3>Defaults</h3>
+			<p>B2B Customer Password: ${info.defaultPasswordB2BCustomer}</p>
+			<p>example: william.hunter@rustic-hw.com | ${info.defaultPasswordB2BCustomer}</p>
+		</div>
 	</div>
 	<div id="dialogContainer"></div>
 </body>

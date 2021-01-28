@@ -1,3 +1,17 @@
+# Import config properties into impex macros
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+
+$defaultPassword = $config-default.password.b2bcustomer
+
 # enable all sample users (since it is only an internal demo system)
-UPDATE B2BCustomer[batchmode = true]; itemtype(code)[unique = true]; loginDisabled
+UPDATE B2BCustomer[batchmode = true]; itemtype(code)[unique = true]; loginDisabled; password[default = $defaultPassword]
                                     ; B2BCustomer                  ; false
+
+# allow all storefronts to enable cross origin
+UPDATE SmartEditConfiguration; key[unique = true]     ; value
+                             ; whiteListedStorefronts ; "[""*.sybit.de""]"
+
+# change the preview URL to the correct one for our demo system
+UPDATE CmsSite; uid[unique = true]; previewURL
+              ; powertools-spa    ; https://una.sybit.de/powertools-spa
+              ; electronics-spa   ; https://una.sybit.de/electronics-spa

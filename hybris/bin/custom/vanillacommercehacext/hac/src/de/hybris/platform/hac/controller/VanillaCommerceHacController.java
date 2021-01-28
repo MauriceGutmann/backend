@@ -33,6 +33,8 @@ public class VanillaCommerceHacController {
 		info.setCommerceVersion(configurationService.getConfiguration().getString("commerce.version"));
 		info.setSpartacusVersion(configurationService.getConfiguration().getString("spartacus.version"));
 		info.setSpartacusSampleDataVersion(configurationService.getConfiguration().getString("spartacus.sampledata.version"));
+		info.setSpartacusPowertoolsUrl(configurationService.getConfiguration().getString("spartacus.powertools.url"));
+		info.setDefaultPasswordB2BCustomer(configurationService.getConfiguration().getString("default.password.b2bcustomer"));
 		model.addAttribute("info", info);
 		return "vanillaCommerceInfo";
 	}
