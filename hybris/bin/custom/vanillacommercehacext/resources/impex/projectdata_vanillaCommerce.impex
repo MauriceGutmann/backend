@@ -12,6 +12,6 @@ UPDATE SmartEditConfiguration; key[unique = true]     ; value
                              ; whiteListedStorefronts ; "[""*.sybit.de""]"
 
 # change the preview URL to the correct one for our demo system
-UPDATE CmsSite; uid[unique = true]; previewURL
-              ; powertools-spa    ; https://una.sybit.de/powertools-spa
-              ; electronics-spa   ; https://una.sybit.de/electronics-spa
+UPDATE CmsSite; uid[unique = true]; previewURL                           ; urlPatterns[mode = append]
+              ; powertools-spa    ; https://una.sybit.de/powertools-spa  ; (?:^|\W)powertools-spa(?:$|\W)
+              ; electronics-spa   ; https://una.sybit.de/electronics-spa ; (?:^|\W)electronics-spa(?:$|\W)

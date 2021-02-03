@@ -12,6 +12,7 @@
 
 		<!-- add a dependency to powertoolsstore to ensure this extension is loaded after powertoolsstore, so we can run an ImpEx to enable all powertools sample user -->
         <requires-extension name="powertoolsstore"/>
+        <requires-extension name="electronicsstore"/>
 
         <!-- add a dependency to spartacussampledata to ensure this extension is loaded after spartacussampledata, so we can run an ImpEx to change the preview URL of the powertools-spa and electronics-spa sites -->
         <requires-extension name="spartacussampledata"/>
