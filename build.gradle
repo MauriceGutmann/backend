@@ -120,10 +120,9 @@ task unzipHybris {
     File zipFile = project.configurations.runtime.find { it.name.startsWith("hybris-commerce-suite") }
     inputs.files zipFile
     doLast {
-        if (file(hybrisBinDir).exists()) {
-            deleteHybrisBinDir()
+        if (file(hybrisDir).exists()) {
+            deleteHybrisDir()
         }
-        delete hybrisConfigDir
         logger.lifecycle "Unzipping ${zipFile.name}"
         copy {
             from zipTree(zipFile)
@@ -139,12 +138,12 @@ task install {
     dependsOn 'unzipHybris'
 }
 
-private void deleteHybrisBinDir() {
-    logger.lifecycle "Deleting ${hybrisBinDir}"
+private void deleteHybrisDir() {
+    logger.lifecycle "Deleting ${hybrisDir}"
     ant.delete(includeEmptyDirs: true) {
-        fileset(dir: hybrisBinDir) {
+        fileset(dir: hybrisDir) {
             include(name: "**/*")
-            exclude(name: "custom/vanillacommercehacext/**")
+            exclude(name: "bin/custom/vanillacommercehacext/**")
         }
     }
 }
